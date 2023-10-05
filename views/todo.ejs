@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>
+        <%= title%>
+    </title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+    <script src="https://kit.fontawesome.com/337643e8f3.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="/CSS/home.css">
+
+</head>
+<body>
+    
+     
+     
+     <div id="ToDoList">
+        <h1>TODO APP</h1>
+        <form action="/createTodo" method="post">
+        <div class="description">
+             <h5>DESCRIPTION</h5>
+             <input type="text"  name="desc" placeholder="What do you need to do?">
+        </div>
+
+        <div class="other-detail">
+            <div class="category">
+                <h5>CATEGORY</h5>
+                <select name="category" class="dropdown" name="month_Selected"  aria-placeholder="" >
+                    <option>Personal</option>
+                    <option>Work</option>
+                    <option>School</option>
+                    <option>Cleaning</option>
+                    <option>Other</option>
+                </select>
+
+            </div>
+            <div class="Date">
+                 <h5>DUE DATE</h5>
+                  <!-- <form  action=method="post">  -->
+                    <input name="date" class="dropdown" style="background-color: rgb(52, 51, 51);" type="date" name="" value="">
+                  <!-- </form>  -->
+                 
+            </div>
+        </div>
+
+       
+        <div class="buttons">
+            <button type="submit" class="add-task"><i class="fa-solid fa-plus"></i> Add Task</button>
+          
+            
+        </div>
+
+        </form>
+
+      
+
+        <form id="contact-form" action="/delete" method="post"></form>
+          <div id="Lists">
+            <ul>
+                <% for(let i of T_List){ %>
+                  <li class="list-style ">
+                   <label>
+                    <input type="checkbox" name="itemToDelete" id="<%= i%>" class="checkbox" value="<%= i.id %>"> 
+                    <span class="desc"> <%= i.desc %></span>
+                    <span class="category-display"><%= i.category %></span> <br>
+                    <span class="date-display"><i class="fa-regular fa-calendar-days"></i></span> 
+                    <%= i.date %><br>
+                    
+                   </label>
+                   
+                  </li>
+                
+                  <div class="delete">
+                    <a href="/delete/?id=<%= i._id %>">
+                      <button type="submit" id="delete-button"  class="Delete-task"><i class="fa-solid fa-trash"></i> Delete Task</button>
+                    </a>
+                    </div>
+                <% } %>
+                
+            </ul>    
+          </div>
+         
+          
+          
+        </form>
+     
+     </div>
+
+
+
+     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
+     <script>
+       
+     </script>
+</body>
+</html>
